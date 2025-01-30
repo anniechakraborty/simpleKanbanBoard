@@ -2,7 +2,7 @@
   <div class="board">
     <div class="controls">
       <button
-        class="btn btn btn-outline-light"
+        class="btn btn btn-outline-dark"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
@@ -16,7 +16,7 @@
           <p>To Dos</p>
           <p class="count">1</p>
         </div>
-        <div class="task">
+        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <div class="header">
             <p class="title">Title</p>
             <button type="button" class="btn-close"></button>
@@ -79,12 +79,12 @@
               />
             </div>
             <div class="col">
-                <select class="form-select" formControlName="status">
-                    <option selected value="">Set Status</option>
-                    <option value="0">To Do</option>
-                    <option value="1">In Progress</option>
-                    <option value="2">Finished</option>
-                  </select>
+              <select class="form-select" formControlName="status">
+                <option selected value="">Set Status</option>
+                <option value="0">To Do</option>
+                <option value="1">In Progress</option>
+                <option value="2">Finished</option>
+              </select>
             </div>
           </div>
           <div class="my-2">
