@@ -1,0 +1,33 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1d1d1d;
+    padding: 1em 0;
+    .left{
+        width: 60%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1em;
+    }
+    .right{
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1em;
+    }
+    a, span{
+        text-decoration: none;
+        cursor: pointer;
+        color: #e4dada;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.2em;
+        font-weight: 500;
+        margin: 0 1em;
+    }
+    a:hover{
+        transition: color 0.3s ease;
+    }
+}

@@ -1,3 +1,13 @@
-<a routerLink="/login" routerLinkActive="active">Login</a>
-<a routerLink="/register" routerLinkActive="active">Register</a>
-<span (click)="logout()">Logout</span>
+<div class="nav">
+    <div class="left">
+        <a href="#">Home</a>
+        <a href="#">Dashboard</a>
+        <a href="#">About</a>
+    </div>
+    <div class="right">
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a routerLink="/register" routerLinkActive="active">Register</a>
+        <span (click)="logout()">Logout</span>
+    </div>
+</div>
+
