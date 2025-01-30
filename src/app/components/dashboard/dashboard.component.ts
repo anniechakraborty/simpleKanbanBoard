@@ -11,7 +11,7 @@ export class DashboardComponent {
   tasksForm = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    status: new FormControl(0),
+    status: new FormControl(''),
   })
 
   // addTask(): void {

@@ -2,8 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // background-color: #1d1d1d;
+    background-color: white;
     padding: 1em 0;
+    // border-bottom: 1px solid rgba(149, 144, 144, 0.37);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     .left{
         width: 60%;
         display: flex;
@@ -21,7 +23,7 @@
     a, span{
         text-decoration: none;
         cursor: pointer;
-        color: #e4dada;
+        color: #201e1e;
         font-family: 'Poppins', sans-serif;
         font-size: 1.2em;
         font-weight: 300;

@@ -6,12 +6,12 @@
 
     .board {
         /* From https://css.glass */
-        background: rgba(255, 255, 255, 0.16);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.37);
+        // background: rgba(255, 255, 255, 0.16);
+        // border-radius: 16px;
+        // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        // backdrop-filter: blur(5px);
+        // -webkit-backdrop-filter: blur(5px);
+        // border: 1px solid rgba(255, 255, 255, 0.37);
 
         min-height: 80%;
         padding: 1em;
@@ -36,8 +36,10 @@
             .in_progress,
             .finished {
                 border-radius: 0.5em;
-                padding: 0.5em;
+                padding: 1em;
                 width: 32%;
+                background-color: white;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
                 p {
                     margin-bottom: 0;
@@ -63,11 +65,11 @@
                 }
 
                 .task {
-                    padding: 0.5em;
-                    border: 0.5px solid rgba(255, 255, 255, 0.37);
+                    padding: 1em;
+                    border: 0.5px solid rgba(182, 182, 182, 0.37);
                     border-radius: 0.5em;
                     margin: 0.5em 0;
-                    color: white;
+                    color: #333;
 
                     .header {
                         display: flex;
