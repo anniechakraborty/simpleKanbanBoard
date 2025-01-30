@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  addTask(): void {
+    console.log('add task');
+  }
 }

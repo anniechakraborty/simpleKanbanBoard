@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+<div class="board_wrapper">
+    <div class="board">
+        <div class="controls">
+            <button (click)="addTask()" class="btn btn btn-outline-dark">Add Task</button>
+        </div>
+        <div class="kanban">
+            <div class="not_started">
+                <div class="category_title">
+                    <span class="material-symbols-outlined">
+                        fiber_manual_record
+                    </span>
+                    <p>To Dos</p>
+                    <p class="count">1</p>
+                </div>
+                <div class="task">
+                    <div class="header">
+                        <p class="title">Title</p>
+                        <button class="btn btn-outline-light">x</button>
+                    </div>
+                    <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos exercitationem inventore minima et similique non, laboriosam quod. Suscipit mollitia enim molestiae deleniti sapiente minus vitae neque doloremque? Molestiae, doloremque!</p>
+                </div>
+                
+            </div>
+            <div class="in_progress">
+                <div class="category_title">
+                    <span class="material-symbols-outlined">
+                        fiber_manual_record
+                    </span>
+                    <p>In Progress</p>
+                    <p class="count">1</p>
+                </div>
+                
+            </div>
+            <div class="finished">
+                <div class="category_title">
+                    <span class="material-symbols-outlined">
+                        fiber_manual_record
+                    </span>
+                    <p>Finished</p>
+                    <p class="count">1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
