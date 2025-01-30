@@ -1,12 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { UserInterface } from '../../interfaces/user-interface';
 
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule, 
+    RouterLink,
+    RouterLinkActive
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
