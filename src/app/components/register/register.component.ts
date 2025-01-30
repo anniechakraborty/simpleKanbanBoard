@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserInterface } from '../../interfaces/user-interface';
 
 
 @Component({
@@ -9,20 +11,27 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-  // fb = inject(FormBuilder);
-  // form = this.fb.nonNullable.group({
-  //   email: ['', Validators.required],
-  //   userName: ['', Validators.required],
-  //   password: ['', Validators.required],
-  // });
+  private apiUrl: string = 'https://api.realworld.io/api';
+
   registerForm = new FormGroup({
     username : new FormControl('', Validators.required),
     email : new FormControl('', Validators.required),
     password : new FormControl('', Validators.required)
   });
 
+  constructor(private http: HttpClient){}
+
   onSubmit(): void{
     console.log(this.registerForm.value);
     // Make API call to authenticate user
+    // The response from this API is an object with the field user and the value in the interface structure
+    this.http.post<{user: UserInterface}>(
+      this.apiUrl + '/users',
+      {
+        user: this.registerForm.value
+      }
+    ).subscribe((res)=>{
+      console.log('Registration response : ',res);
+    })
   }
 }
