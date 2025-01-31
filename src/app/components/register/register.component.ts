@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserInterface } from '../../interfaces/user-interface';
+import { AuthServiceService } from '../../service/auth-service.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { UserInterface } from '../../interfaces/user-interface';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-  private apiUrl: string = 'https://api.realworld.io/api';
+  private apiUrl: string = 'http://127.0.0.1:5000/auth';
 
   registerForm = new FormGroup({
     username : new FormControl('', Validators.required),
@@ -24,19 +25,24 @@ export class RegisterComponent {
     password : new FormControl('', Validators.required)
   });
 
-  constructor(private http: HttpClient){}
+  constructor(
+    private http: HttpClient, 
+    private authService: AuthServiceService,
+    private router: Router
+  ){}
 
   onSubmit(): void{
     console.log(this.registerForm.value);
     // Make API call to authenticate user
     // The response from this API is an object with the field user and the value in the interface structure
-    this.http.post<{user: UserInterface}>(
-      this.apiUrl + '/users',
-      {
-        user: this.registerForm.value
-      }
-    ).subscribe((res)=>{
+    this.http.post(
+      this.apiUrl + '/register',
+      this.registerForm.value
+    ).subscribe((res: any)=>{
       console.log('Registration response : ',res);
+      localStorage.setItem('token', res.token);
+      this.authService.currentUserSignal.set(res);
+      this.router.navigateByUrl('/dashboard');
     })
   }
 }

@@ -1,12 +1,21 @@
 <div class="nav">
     <div class="left">
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <div *ngIf="authService?.currentUserSignal() === null || authService.currentUserSignal() === undefined">
+            <a routerLink="/home" routerLinkActive="active">Home</a>
+        </div>
+        <div *ngIf="authService?.currentUserSignal()">
+            <span>Welcome {{ authService.currentUserSignal()?.username }}</span>
+            <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </div>
     </div>
     <div class="right">
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-        <a routerLink="/register" routerLinkActive="active">Register</a>
-        <span (click)="logout()">Logout</span>
+        <div *ngIf="authService?.currentUserSignal() === null || authService.currentUserSignal() === undefined">
+            <a routerLink="/login" routerLinkActive="active">Login</a>
+            <a routerLink="/register" routerLinkActive="active">Register</a>
+        </div>
+        <div *ngIf="authService?.currentUserSignal()">
+            <span (click)="logout()">Logout</span>
+        </div>
     </div>
 </div>
 
