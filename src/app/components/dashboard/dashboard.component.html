@@ -14,18 +14,17 @@
         <div class="category_title">
           <span class="material-symbols-outlined"> fiber_manual_record </span>
           <p>To Dos</p>
-          <p class="count">1</p>
+          <p class="count">{{todoTasks.length}}</p>
         </div>
-        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+        *ngFor="let task of todoTasks"
+        >
           <div class="header">
-            <p class="title">Title</p>
+            <p class="title">{{task['title']}}</p>
             <button type="button" class="btn-close"></button>
           </div>
           <p class="desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos
-            exercitationem inventore minima et similique non, laboriosam quod.
-            Suscipit mollitia enim molestiae deleniti sapiente minus vitae neque
-            doloremque? Molestiae, doloremque!
+            {{task['description']}}
           </p>
         </div>
       </div>
@@ -33,14 +32,36 @@
         <div class="category_title">
           <span class="material-symbols-outlined"> fiber_manual_record </span>
           <p>In Progress</p>
-          <p class="count">1</p>
+          <p class="count">{{inProgressTasks.length}}</p>
+        </div>
+        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+        *ngFor="let task of inProgressTasks"
+        >
+          <div class="header">
+            <p class="title">{{task['title']}}</p>
+            <button type="button" class="btn-close"></button>
+          </div>
+          <p class="desc">
+            {{task['description']}}
+          </p>
         </div>
       </div>
       <div class="finished">
         <div class="category_title">
           <span class="material-symbols-outlined"> fiber_manual_record </span>
           <p>Finished</p>
-          <p class="count">1</p>
+          <p class="count">{{finishedTasks.length}}</p>
+        </div>
+        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+        *ngFor="let task of finishedTasks"
+        >
+          <div class="header">
+            <p class="title">{{task['title']}}</p>
+            <button type="button" class="btn-close"></button>
+          </div>
+          <p class="desc">
+            {{task['description']}}
+          </p>
         </div>
       </div>
     </div>
