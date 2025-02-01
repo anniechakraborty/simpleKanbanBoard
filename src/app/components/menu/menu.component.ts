@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthServiceService } from '../../service/auth-service.service';
 import { CommonModule } from '@angular/common';
 
@@ -16,8 +16,12 @@ import { CommonModule } from '@angular/common';
 export class MenuComponent {
   constructor(
     protected authService: AuthServiceService,
+    private router: Router
   ) { }
   logout(): void{
     console.log('log out');
+    localStorage.setItem('token', '');
+    this.authService.currentUserSignal.set(null);
+    this.router.navigateByUrl('/home');
   }
 }
