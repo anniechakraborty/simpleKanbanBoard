@@ -4,7 +4,7 @@
 
 This is an **Angular-based Kanban Board** application that allows users to create, manage, and track tasks. The application uses **Reactive Forms** for user input and integrates API data for task retrieval and updates. The application also implements user authentication and authorization, and route protection using **authGuard**.
 
-The backend of this application is written using **Python's Flask** framework, and the database is implemented using **MongoDB**. 
+The [backend](https://github.com/anniechakraborty/simpleKanbanBackend) of this application is written using **Python's Flask** framework, and the database is implemented using **MongoDB**. We have used RestAPIs to implement all the **CRUD** operations.
 
 ## 🚀 Features
 
@@ -45,7 +45,7 @@ The backend of this application is written using **Python's Flask** framework, 
    ```
 4. Open the browser and go to `http://localhost:4200/`
 
-📦 Installation (backend)
+## 📦 Installation (backend)
 
 1. **Clone the repository:**
    ```sh
