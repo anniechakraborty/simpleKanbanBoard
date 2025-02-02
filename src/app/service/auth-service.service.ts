@@ -21,5 +21,9 @@ export class AuthServiceService {
    */
   // 
   currentUserSignal = signal<UserInterface | undefined | null>(undefined);
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token'); // Example: Check if token exists
+  }
   
 }
