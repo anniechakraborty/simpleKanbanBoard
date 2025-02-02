@@ -17,12 +17,12 @@
           <p>To Dos</p>
           <p class="count">{{todoTasks.length}}</p>
         </div>
-        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal" 
-        *ngFor="let task of todoTasks" (click)="getTaskById(task._id)"
-        >
+        <div class="task" *ngFor="let task of todoTasks">
           <div class="header">
-            <p class="title">{{task['title']}}</p>
-            <button type="button" class="btn-close"></button>
+            <div data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getTaskById(task._id)">
+              <p class="title">{{task['title']}}</p>
+            </div>
+            <button type="button" class="btn-close" (click)="deleteTask(task._id)"></button>
           </div>
           <p class="desc">
             {{task['description']}}
@@ -35,12 +35,12 @@
           <p>In Progress</p>
           <p class="count">{{inProgressTasks.length}}</p>
         </div>
-        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal" 
-        *ngFor="let task of inProgressTasks" (click)="getTaskById(task._id)"
-        >
+        <div class="task" *ngFor="let task of inProgressTasks">
           <div class="header">
-            <p class="title">{{task['title']}}</p>
-            <button type="button" class="btn-close"></button>
+            <div data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getTaskById(task._id)">
+              <p class="title">{{task['title']}}</p>
+            </div>
+            <button type="button" class="btn-close" (click)="deleteTask(task._id)"></button>
           </div>
           <p class="desc">
             {{task['description']}}
@@ -53,12 +53,12 @@
           <p>Finished</p>
           <p class="count">{{finishedTasks.length}}</p>
         </div>
-        <div class="task" data-bs-toggle="modal" data-bs-target="#exampleModal" 
-        *ngFor="let task of finishedTasks" (click)="getTaskById(task._id)"
-        >
+        <div class="task" *ngFor="let task of finishedTasks">
           <div class="header">
-            <p class="title">{{task['title']}}</p>
-            <button type="button" class="btn-close"></button>
+            <div data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getTaskById(task._id)">
+              <p class="title">{{task['title']}}</p>
+            </div>
+            <button type="button" class="btn-close" (click)="deleteTask(task._id)"></button>
           </div>
           <p class="desc">
             {{task['description']}}
@@ -66,6 +66,11 @@
         </div>
       </div>
     </div>
+  </div>
+  <!-- Alerts -->
+  <div [ngClass]="'alert-'+ alertType" class="alert alert-dismissible fade show" role="alert" *ngIf="showAlert">
+    {{ alertMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 </div>
 

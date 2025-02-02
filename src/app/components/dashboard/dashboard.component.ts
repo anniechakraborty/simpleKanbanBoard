@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { TasksInterface } from '../../interfaces/tasks-interface';
+import { TasksInterface, TasksResponse } from '../../interfaces/tasks-interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,9 +17,12 @@ export class DashboardComponent implements OnInit {
   protected inProgressTasks: TasksInterface[] = [];
   protected finishedTasks: TasksInterface[] = [];
   protected activeTaskID: string = "";
-  modalTitle: string = '';
+  protected modalTitle: string = '';
+  protected showAlert: boolean = false;
+  protected alertMessage: string = '';
+  protected alertType: string = '';
 
-  tasksForm = new FormGroup({
+  protected tasksForm = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     status: new FormControl('', Validators.required),
@@ -52,8 +55,23 @@ export class DashboardComponent implements OnInit {
               'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
           }
-        ).subscribe(data => {
-          console.log('Task added successfully', data);
+        ).subscribe((data: any) => {
+          console.log('Task added response : ', data);
+          if(data['status'] === 200){
+            this.showAlert = true;
+            setInterval(()=>{
+              this.showAlert = false;
+            }, 3000);
+            this.alertMessage = data['message'];
+            this.alertType ='success';
+          }else{
+            this.showAlert = true;
+            setInterval(()=>{
+              this.showAlert = false;
+            }, 3000);
+            this.alertMessage = data['message'];
+            this.alertType = 'danger';
+          }
           this.tasksForm.reset();
           this.getAllTasks();
         })
@@ -66,8 +84,23 @@ export class DashboardComponent implements OnInit {
               'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
           }
-        ).subscribe(data => {
+        ).subscribe((data: any) => {
           console.log('Task updated successfully', data);
+          if(data['status'] === 200){
+            this.showAlert = true;
+            setInterval(()=>{
+              this.showAlert = false;
+            }, 3000);
+            this.alertMessage = data['message'];
+            this.alertType ='success';
+          }else{
+            this.showAlert = true;
+            setInterval(()=>{
+              this.showAlert = false;
+            }, 3000);
+            this.alertMessage = data['message'];
+            this.alertType = 'danger';
+          }
           this.tasksForm.reset();
           this.getAllTasks();
         })
@@ -125,8 +158,23 @@ export class DashboardComponent implements OnInit {
           'Authorization': 'Bearer '+ localStorage.getItem('token')
         }
       }
-    ).subscribe(data => {
+    ).subscribe((data : any) => {
       console.log('Task deleted successfully', data);
+      if(data['status'] === 200){
+        this.showAlert = true;
+        setInterval(()=>{
+          this.showAlert = false;
+        }, 3000);
+        this.alertMessage = data['message'];
+        this.alertType ='success';
+      }else{
+        this.showAlert = true;
+        setInterval(()=>{
+          this.showAlert = false;
+        }, 3000);
+        this.alertMessage = data['message'];
+        this.alertType = 'danger';
+      }
       this.getAllTasks();
     })
   }

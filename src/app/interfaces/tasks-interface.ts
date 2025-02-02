@@ -6,3 +6,8 @@ export interface TasksInterface {
     created_on: string;
     created_by: string;
 }
+
+export interface TasksResponse {
+    message: string;
+    status: number;
+}
