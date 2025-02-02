@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   protected todoTasks: TasksInterface[] = [];
   protected inProgressTasks: TasksInterface[] = [];
   protected finishedTasks: TasksInterface[] = [];
+  protected activeTaskID: string = "";
   modalTitle: string = '';
 
   tasksForm = new FormGroup({
@@ -36,23 +37,42 @@ export class DashboardComponent implements OnInit {
   addTask(){
     this.modalTitle = 'Add Task';
     this.tasksForm.reset();
+    this.activeTaskID="";
   }
 
   onSubmit(): void{
     console.log(this.tasksForm.valid);
-    this.http.post(
-      this.apiUrl + '/',
-      this.tasksForm.value,
-      {
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
+    if(this.tasksForm.valid){
+      if(this.activeTaskID === ""){
+        this.http.post(
+          this.apiUrl + '/',
+          this.tasksForm.value,
+          {
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }
+        ).subscribe(data => {
+          console.log('Task added successfully', data);
+          this.tasksForm.reset();
+          this.getAllTasks();
+        })
+      }else{
+        this.http.put(
+          this.apiUrl + '/' + this.activeTaskID,
+          this.tasksForm.value,
+          {
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }
+        ).subscribe(data => {
+          console.log('Task updated successfully', data);
+          this.tasksForm.reset();
+          this.getAllTasks();
+        })
       }
-    ).subscribe(data => {
-      console.log('Task added successfully', data);
-      this.tasksForm.reset();
-      this.getAllTasks();
-    })
+    }
   }
 
   getAllTasks() {
@@ -75,6 +95,7 @@ export class DashboardComponent implements OnInit {
 
   getTaskById(taskId: string){
     console.log(taskId);
+    this.activeTaskID = taskId;
     this.http.get(
       this.apiUrl + '/' + taskId,
       {
@@ -92,6 +113,21 @@ export class DashboardComponent implements OnInit {
           status: res.task.status
         });
       }
+    })
+  }
+
+  deleteTask(taskId: string){
+    console.log(taskId);
+    this.http.delete(
+      this.apiUrl + '/' + taskId,
+      {
+        headers: {
+          'Authorization': 'Bearer '+ localStorage.getItem('token')
+        }
+      }
+    ).subscribe(data => {
+      console.log('Task deleted successfully', data);
+      this.getAllTasks();
     })
   }
 }
