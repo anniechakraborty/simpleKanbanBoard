@@ -19,6 +19,7 @@
         width: 70%;
         padding: 1.5em;
         background-color: white;
+        text-wrap: wrap;
 
         .btn_group{
             display: flex;
@@ -28,7 +29,7 @@
         .pre_tags{
             // background-color: '#333';
             pre {
-                background-color: #f4f4f4; /* Light grey background */
+                background-color: #d3cccc; /* Light grey background */
                 padding: 10px;
                 border-radius: 5px;
                 overflow-x: auto;

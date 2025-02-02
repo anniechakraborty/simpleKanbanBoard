@@ -151,31 +151,33 @@ export class DashboardComponent implements OnInit {
 
   deleteTask(taskId: string){
     console.log(taskId);
-    this.http.delete(
-      this.apiUrl + '/' + taskId,
-      {
-        headers: {
-          'Authorization': 'Bearer '+ localStorage.getItem('token')
+    if(confirm("Are you sure to delete?")) {
+      this.http.delete(
+        this.apiUrl + '/' + taskId,
+        {
+          headers: {
+            'Authorization': 'Bearer '+ localStorage.getItem('token')
+          }
         }
-      }
-    ).subscribe((data : any) => {
-      console.log('Task deleted successfully', data);
-      if(data['status'] === 200){
-        this.showAlert = true;
-        setInterval(()=>{
-          this.showAlert = false;
-        }, 3000);
-        this.alertMessage = data['message'];
-        this.alertType ='success';
-      }else{
-        this.showAlert = true;
-        setInterval(()=>{
-          this.showAlert = false;
-        }, 3000);
-        this.alertMessage = data['message'];
-        this.alertType = 'danger';
-      }
-      this.getAllTasks();
-    })
+      ).subscribe((data : any) => {
+        console.log('Task deleted successfully', data);
+        if(data['status'] === 200){
+          this.showAlert = true;
+          setInterval(()=>{
+            this.showAlert = false;
+          }, 3000);
+          this.alertMessage = data['message'];
+          this.alertType ='success';
+        }else{
+          this.showAlert = true;
+          setInterval(()=>{
+            this.showAlert = false;
+          }, 3000);
+          this.alertMessage = data['message'];
+          this.alertType = 'danger';
+        }
+        this.getAllTasks();
+      })
+    }
   }
 }
