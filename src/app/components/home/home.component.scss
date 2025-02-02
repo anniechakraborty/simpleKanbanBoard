@@ -16,13 +16,28 @@
         // -webkit-backdrop-filter: blur(5px);
         // border: 1px solid rgba(255, 255, 255, 0.37);
 
-        width: 50%;
+        width: 70%;
         padding: 1.5em;
         background-color: white;
 
         .btn_group{
             display: flex;
             gap: 1em;
+        }
+
+        .pre_tags{
+            // background-color: '#333';
+            pre {
+                background-color: #f4f4f4; /* Light grey background */
+                padding: 10px;
+                border-radius: 5px;
+                overflow-x: auto;
+              }
+              
+              code {
+                color: #d63384; /* Bootstrap pink for contrast */
+                font-family: monospace;
+              }
         }
     }
 

@@ -1,49 +1,174 @@
 <div class="main_wrapper">
-    <div class="kanban">
-      <p class="display-6 mb-4">Simple Kanban Board</p>
-      <h2 class="h2">📌 Project Overview</h2>
-      <p>
-        This is an <strong>Angular-based Kanban Board</strong> application that allows users to create, manage, and track tasks. 
-        The application uses <strong>Reactive Forms</strong> for user input and integrates API data for task retrieval and updates. 
-        The application also implements user authentication and authorization, and route protection using <strong>authGuard</strong>.
-      </p>
-      <p>
-        The backend of this application is written using <strong>Python's Flask</strong> framework, and the database is implemented using <strong>MongoDB</strong>.
-      </p>
-    
-      <h2 class="h2">🚀 Features</h2>
-      <ul>
-        <li>User registration, login, and authentication</li>
-        <li>CRUD operations for tasks</li>
-        <li>Reactive Forms for managing task input</li>
-        <li>API Integration for fetching and updating tasks</li>
-        <li>Flask for REST API implementation</li>
-        <li>MongoDB for database storage</li>
-      </ul>
-    
-      <h2>🛠️ Technologies Used</h2>
-      <ul>
-        <li>Angular 19 (CLI)</li>
-        <li>TypeScript</li>
-        <li>Python 3.13.1</li>
-        <li>Flask</li>
-        <li>JWT Tokens, Flask-Bcrypt</li>
-        <li>PyMongo</li>
-        <li>Bootstrap 5</li>
-        <li>HttpClient for HTTP requests</li>
-        <li>Reactive Forms for user input</li>
-        <li>AuthGuard for route protection</li>
-      </ul>
-    
-      <h2>📜 License</h2>
-      <p>This project is licensed under the <strong>MIT License</strong>.</p>
-    
-      <h2>📞 Contact</h2>
-      <p>For any issues or suggestions, reach out via:</p>
-      <ul>
-        <li>Email: <a href="mailto:chakrabortyannie20@gmail.com">{{'chakrabortyannie20@gmail.com'}}</a></li>
-        <li>GitHub: <a href="https://github.com/anniechakraborty" target="_blank">https://github.com/anniechakraborty</a></li>
-      </ul>
-    </div>
+  <div class="kanban">
+    <p class="display-6 mb-4">Simple Kanban Board</p>
+    <h2 class="h2">📌 Overview</h2>
+    <p>
+      This is an <strong>Angular-based Kanban Board</strong> application that
+      allows users to create, manage, and track tasks. The application uses
+      <strong>Reactive Forms</strong> for user input and integrates API data for
+      task retrieval and updates. The application also implements user
+      authentication and authorization, and route protection using
+      <strong>authGuard</strong>.
+    </p>
+    <p>
+      The backend of this application is written using
+      <strong>Python's Flask</strong> framework, and the database is implemented
+      using <strong>MongoDB</strong>.
+    </p>
+
+    <h2 class="h2">🚀 Features</h2>
+    <ul>
+      <li>User registration, login, and authentication</li>
+      <li>CRUD operations for tasks</li>
+      <li>Reactive Forms for managing task input</li>
+      <li>API Integration for fetching and updating tasks</li>
+      <li>Flask for REST API implementation</li>
+      <li>MongoDB for database storage</li>
+    </ul>
+
+    <h2>🛠️ Technologies Used</h2>
+    <ul>
+      <li>Angular 19 (CLI)</li>
+      <li>TypeScript</li>
+      <li>Python 3.13.1</li>
+      <li>Flask</li>
+      <li>JWT Tokens, Flask-Bcrypt</li>
+      <li>PyMongo</li>
+      <li>Bootstrap 5</li>
+      <li>HttpClient for HTTP requests</li>
+      <li>Reactive Forms for user input</li>
+      <li>AuthGuard for route protection</li>
+    </ul>
+
+    <h2>📦 Installation</h2>
+    <h3>Frontend</h3>
+    <ol>
+      <li>
+        Clone the repository:
+        <pre><code>git clone https://github.com/anniechakraborty/simpleKanbanBoard.git
+cd simpleKanbanBoard</code></pre>
+      </li>
+      <li>
+        Install dependencies:
+        <pre><code>npm install</code></pre>
+      </li>
+      <li>
+        Run the Angular app:
+        <div class="pre_tags">
+          <pre><code>ng serve</code></pre>
+        </div>
+      </li>
+      <li>Open the browser and go to <code>http://localhost:4200/</code></li>
+    </ol>
+
+    <h3>Backend</h3>
+    <ol>
+      <li>
+        Clone the repository:
+        <div class="pre_tags">
+          <pre><code>git clone https://github.com/anniechakraborty/simpleKanbanBackend.git</code></pre>
+          <pre><code>cd simpleKanbanBackend</code></pre>
+        </div>
+      </li>
+      <li>
+        Create a Virtual Environment and activate it:
+        <div class="pre_tags">
+          <pre><code>python -m venv venv </code></pre>
+          <pre><code>venv/Scripts/activate</code></pre>
+        </div>
+      </li>
+      <li>
+        Install dependencies:
+        <div class="pre_tags">
+          <pre><code>pip install -r requirements.txt</code></pre>
+        </div>
+      </li>
+      <li>
+        Run the Python app:
+        <div class="pre_tags">
+          <pre><code>py run.py</code></pre>
+        </div>
+      </li>
+    </ol>
+
+    <h2>🔧 Usage</h2>
+    <h3>Register or Login as a user</h3>
+    <ul>
+      <li>Enter a unique username, email, and password.</li>
+      <li>Click on 'Register'.</li>
+      <li>
+        If you are a returning user, click on 'Sign in' and enter your
+        credentials.
+      </li>
+    </ul>
+
+    <h3>Adding a Task</h3>
+    <ul>
+      <li>
+        Fill in the <strong>task title</strong> and
+        <strong>description</strong> in the form. Set the status.
+      </li>
+      <li>Click the <strong>Add Task</strong> button to save the task.</li>
+    </ul>
+
+    <h3>Viewing and Editing Tasks</h3>
+    <ul>
+      <li>
+        Tasks are displayed in a list format under their respective status
+        categories.
+      </li>
+      <li>
+        Click on a task title to open a <strong>modal window</strong> with
+        details.
+      </li>
+      <li>
+        Edit the task by making changes in the form fields inside the modal.
+      </li>
+      <li>Save the changes by clicking on Save.</li>
+    </ul>
+
+    <h3>Deleting a Task</h3>
+    <ul>
+      <li>
+        Click the <strong>cross (X)</strong> button on the right side of the
+        task title to remove a task from the list.
+      </li>
+      <li>
+        A confirmation prompt will appear before deletion to prevent accidental
+        removals.
+      </li>
+    </ul>
+
+    <h2>📜 License</h2>
+    <p>This project is licensed under the <strong>MIT License</strong>.</p>
+
+    <h2>📞 Contact</h2>
+    <p>For any issues or suggestions, reach out via:</p>
+    <ul>
+      <li>
+        Email:
+        <a href="mailto:chakrabortyannie20@gmail.com">{{
+          "chakrabortyannie20@gmail.com"
+        }}</a>
+      </li>
+      <li>
+        GitHub:
+        <a href="https://github.com/anniechakraborty" target="_blank"
+          >https://github.com/anniechakraborty</a
+        >
+      </li>
+      <li>
+        Frontend:
+        <a href="https://github.com/anniechakraborty" target="_blank"
+          >https://github.com/anniechakraborty</a
+        >
+      </li>
+      <li>
+        Backend:
+        <a href="https://github.com/anniechakraborty" target="_blank"
+          >https://github.com/anniechakraborty</a
+        >
+      </li>
+    </ul>
   </div>
-  
+</div>
