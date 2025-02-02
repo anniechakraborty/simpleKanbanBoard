@@ -36,12 +36,13 @@ export class AppComponent implements OnInit{
           }
         }
       ).subscribe((res: any) => {
-        console.log('User response : ', res);
+        // console.log('User response : ', res);
         if(res.status === 200) {
           // If user is authenticated, set the user data in the service
           this.authService.currentUserSignal.set(res);
         }
         else {
+          console.log('User not found / authenticated');
           this.authService.currentUserSignal.set(null);
         }
       })
