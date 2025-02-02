@@ -13,14 +13,15 @@ import { TasksInterface } from '../../interfaces/tasks-interface';
 })
 export class DashboardComponent implements OnInit {
   private apiUrl: string = "http://127.0.0.1:5000/tasks";
-  protected todoTasks: [] = [];
-  protected inProgressTasks: [] = [];
-  protected finishedTasks: [] = [];
+  protected todoTasks: TasksInterface[] = [];
+  protected inProgressTasks: TasksInterface[] = [];
+  protected finishedTasks: TasksInterface[] = [];
+  modalTitle: string = '';
 
   tasksForm = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    status: new FormControl(''),
+    status: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -28,11 +29,17 @@ export class DashboardComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-      this.getAllTasks()
+      this.modalTitle = 'Add Task';
+      this.getAllTasks();
+  }
+
+  addTask(){
+    this.modalTitle = 'Add Task';
+    this.tasksForm.reset();
   }
 
   onSubmit(): void{
-    console.log(this.tasksForm.value);
+    console.log(this.tasksForm.valid);
     this.http.post(
       this.apiUrl + '/',
       this.tasksForm.value,
@@ -62,6 +69,28 @@ export class DashboardComponent implements OnInit {
         this.todoTasks = res.task.filter((task: TasksInterface)=> Number(task.status) === 0);
         this.inProgressTasks = res.task.filter((task: TasksInterface)=> Number(task.status) === 1);
         this.finishedTasks = res.task.filter((task: TasksInterface)=> Number(task.status) === 2);
+      }
+    })
+  }
+
+  getTaskById(taskId: string){
+    console.log(taskId);
+    this.http.get(
+      this.apiUrl + '/' + taskId,
+      {
+        headers: {
+          'Authorization': 'Bearer '+ localStorage.getItem('token')
+        }
+      }
+    ).subscribe((res: any) => {
+      console.log('Task fetched : ', res);
+      if(res.status == 200) {
+        this.modalTitle = 'Edit Task';
+        this.tasksForm.patchValue({
+          title: res.task.title,
+          description: res.task.description,
+          status: res.task.status
+        });
       }
     })
   }
