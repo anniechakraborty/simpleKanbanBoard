@@ -36,4 +36,9 @@
       </div>
     </form>
   </div>
+  <!-- Alerts -->
+  <div [ngClass]="'alert-'+ alertType" class="alert my-3 alert-dismissible fade show" role="alert" *ngIf="showAlert">
+    {{ alertMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 </div>

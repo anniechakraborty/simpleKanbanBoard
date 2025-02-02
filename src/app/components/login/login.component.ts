@@ -4,19 +4,25 @@ import { UserInterface } from '../../interfaces/user-interface';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthServiceService } from '../../service/auth-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   imports: [
     ReactiveFormsModule, 
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    CommonModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   private apiUrl: string = 'http://127.0.0.1:5000/auth';
+  protected showAlert: boolean = false;
+  protected alertMessage: string = '';
+  protected alertType: string = '';
+
   constructor(
     private http: HttpClient, 
     private authService: AuthServiceService,
@@ -35,9 +41,19 @@ export class LoginComponent {
       this.form.value
     ).subscribe((res: any)=>{
       console.log('Login response : ',res);
-      localStorage.setItem('token', res.token);
-      this.authService.currentUserSignal.set(res);
-      this.router.navigateByUrl('/dashboard');
+      if(res['status']==200){
+        localStorage.setItem('token', res.token);
+        this.authService.currentUserSignal.set(res);
+        this.router.navigateByUrl('/dashboard');
+      }
+      else{
+        this.showAlert = true;
+        setInterval(()=>{
+          this.showAlert = false;
+        }, 4000);
+        this.alertMessage = res['message'];
+        this.alertType = 'danger';
+      }
     })
   }
 }

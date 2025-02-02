@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserInterface } from '../../interfaces/user-interface';
 import { AuthServiceService } from '../../service/auth-service.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -11,15 +12,19 @@ import { AuthServiceService } from '../../service/auth-service.service';
   imports: [
     ReactiveFormsModule, 
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    CommonModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   private apiUrl: string = 'http://127.0.0.1:5000/auth';
+  protected showAlert: boolean = false;
+  protected alertMessage: string = '';
+  protected alertType: string = '';
 
-  registerForm = new FormGroup({
+  protected registerForm = new FormGroup({
     username : new FormControl('', Validators.required),
     email : new FormControl('', Validators.required),
     password : new FormControl('', Validators.required)
@@ -40,9 +45,19 @@ export class RegisterComponent {
       this.registerForm.value
     ).subscribe((res: any)=>{
       console.log('Registration response : ',res);
-      localStorage.setItem('token', res.token);
-      this.authService.currentUserSignal.set(res);
-      this.router.navigateByUrl('/dashboard');
+      if(res['status']===200){
+        localStorage.setItem('token', res.token);
+        this.authService.currentUserSignal.set(res);
+        this.router.navigateByUrl('/dashboard');
+      }
+      else{
+        this.showAlert = true;
+        setInterval(()=>{
+          this.showAlert = false;
+        }, 4000);
+        this.alertMessage = res['message'];
+        this.alertType = 'danger';
+      }
     })
   }
 }

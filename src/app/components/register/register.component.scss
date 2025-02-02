@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     // color: white;
     min-height: 80vh;
@@ -25,5 +26,4 @@
             gap: 1em;
         }
     }
-
 }
