@@ -1,59 +1,105 @@
-# SimpleKanbanBoard
+# Simple Kanban Board
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+## 📌 Project Overview
 
-## Development server
+This is an **Angular-based Kanban Board** application that allows users to create, manage, and track tasks. The application uses **Reactive Forms** for user input and integrates API data for task retrieval and updates. The application also implements user authentication and authorization, and route protection using **authGuard**.
 
-To start a local development server, run:
+The backend of this application is written using **Python's Flask** framework, and the database is implemented using **MongoDB**. 
 
-```bash
-ng serve
-```
+## 🚀 Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **User registration, login and proper authentication**
+- **Create, Read, Update, and Delete (CRUD) Tasks**
+- **Reactive Forms** for managing task input
+- **API Integration** for fetching and updating tasks
+- **Flask** used to implement the RestAPIs
+- **MongoDB** is used to implement the database.
 
-## Code scaffolding
+## 🛠️ Technologies Used
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Angular 19** (CLI)
+- **TypeScript**
+- **Python 3.13.1** 
+- **Flask**
+- **JWT Tokens, Flask-Bcrypt** (to handle token generation for user authentication)
+- **PyMongo** (for database connection)
+- **Bootstrap 5** (for UI styling)
+- **HttpClient** (to handle HTTP requests)
+- **Reactive Forms** (for user input handling)
+- **Guard** (an authGuard to protect the routes)
 
-```bash
-ng generate component component-name
-```
+## 📦 Installation (frontend)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/anniechakraborty/simpleKanbanBoard.git
+   cd simpleKanbanBoard
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Run the Angular app:**
+   ```sh
+   ng serve
+   ```
+4. Open the browser and go to `http://localhost:4200/`
 
-```bash
-ng generate --help
-```
+📦 Installation (backend)
 
-## Building
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/anniechakraborty/simpleKanbanBackend.git
+   cd simpleKanbanBackend
+   ```
+2. **Create a Virtual Environment and activate it:**
+   ```sh
+   python -m venv venv
+   venv/Scripts/activate
+   ```
+3. **Install dependencies:**
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. **Run the Python app:**
+   ```sh
+   py run.py
+   ```
 
-To build the project run:
 
-```bash
-ng build
-```
+## 🔧 Usage
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### **Register or Login as a user**
 
-## Running unit tests
+- Enter a unique username, email and password
+- Click on 'Register' button to register
+- If you are a returning user then click on Sign in and enter your email and password
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### **Adding a Task**
 
-```bash
-ng test
-```
+- Fill in the **task title** and **description** in the form. Set the status.
+- Click the **Add Task** button to save the task.
 
-## Running end-to-end tests
+### **Viewing and Editing Tasks**
 
-For end-to-end (e2e) testing, run:
+- Tasks are displayed in a list format under their respective status categories.
+- Click on a task title to open a **modal window** with details.
+- Edit the task by making changes in the form fields inside the modal.
+- Save the changes by clicking on Save.
 
-```bash
-ng e2e
-```
+### **Deleting a Task**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Click the **cross (X)** button on the right side of the task title to remove a task from the list. A confirmation prompt will appear before deletion to prevent accidental removals.
 
-## Additional Resources
+## 📜 License
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is licensed under the **MIT License**.
+
+## 📞 Contact
+
+For any issues or suggestions, reach out via:
+
+- 📧 Email: [chakrabortyannie20@gmail.com](mailto\:chakrabortyannie20@gmail.com)
+- 🐙 GitHub: [https://github.com/anniechakraborty](https://github.com/anniechakraborty)
+
+---
