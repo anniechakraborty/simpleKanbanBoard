@@ -12,7 +12,7 @@ import { TasksInterface, TasksResponse } from '../../interfaces/tasks-interface'
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
-  private apiUrl: string = "http://127.0.0.1:5000/tasks";
+  private apiUrl: string = "https://simplekanbanbackend.onrender.com/tasks";
   protected todoTasks: TasksInterface[] = [];
   protected inProgressTasks: TasksInterface[] = [];
   protected finishedTasks: TasksInterface[] = [];

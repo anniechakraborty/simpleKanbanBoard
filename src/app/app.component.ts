@@ -21,7 +21,7 @@ import { AuthServiceService } from './service/auth-service.service';
 })
 export class AppComponent implements OnInit{
   title = 'simpleKanbanBoard';
-  private apiUrl: string = 'http://127.0.0.1:5000/auth';
+  private apiUrl: string = 'https://simplekanbanbackend.onrender.com/auth';
   constructor (
     private http: HttpClient,
     private authService: AuthServiceService,

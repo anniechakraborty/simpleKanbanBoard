@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-  private apiUrl: string = 'http://127.0.0.1:5000/auth';
+  private apiUrl: string = 'https://simplekanbanbackend.onrender.com/auth';
   protected showAlert: boolean = false;
   protected alertMessage: string = '';
   protected alertType: string = '';
