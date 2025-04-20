@@ -28,11 +28,13 @@ export class AppComponent implements OnInit{
   ){}
   // Get current user to verify a user is logged or not
   ngOnInit(): void {
+    let token = localStorage.getItem('token');
+    if (token){
       this.http.get(
         this.apiUrl + '/user', 
         {
           headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
+            'Authorization': 'Bearer ' + token
           }
         }
       ).subscribe((res: any) => {
@@ -45,6 +47,10 @@ export class AppComponent implements OnInit{
           console.log('User not found / authenticated');
           this.authService.currentUserSignal.set(null);
         }
-      })
+      });
+    }
+    else{
+      console.log('Token empty!')
+    }
   }
 }
